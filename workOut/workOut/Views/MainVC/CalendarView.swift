@@ -14,6 +14,7 @@ class CalendarView: UIView {
         layout.minimumInteritemSpacing = 3
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .none
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     
@@ -38,7 +39,7 @@ class CalendarView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(collectionView)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: idCalendarCell )
+        collectionView.register(CalendarCollectionViewCell.self, forCellWithReuseIdentifier: idCalendarCell )
     }
     
     private func setDelegates() {
@@ -55,7 +56,9 @@ extension CalendarView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: idCalendarCell, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: idCalendarCell, for: indexPath) as? CalendarCollectionViewCell else {
+            return UICollectionViewCell()
+        }
         return cell
     }
 }
@@ -80,7 +83,7 @@ extension CalendarView {
     private func setConstraints() {
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: topAnchor, constant: 5),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 105),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5)
             

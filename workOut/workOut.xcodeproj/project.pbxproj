@@ -18,6 +18,10 @@
 		9DD4785128D8706700DC2B44 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4784D28D8706700DC2B44 /* UIView + Extensions.swift */; };
 		9DD4785228D8706700DC2B44 /* UIFont + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4784E28D8706700DC2B44 /* UIFont + Extensions.swift */; };
 		9DD4785328D8706700DC2B44 /* UIStackView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4784F28D8706700DC2B44 /* UIStackView + Extensions.swift */; };
+		9DD4789628DC081000DC2B44 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4789528DC081000DC2B44 /* CalendarCollectionViewCell.swift */; };
+		9DD4789A28DC0D0B00DC2B44 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DD4789828DC0D0B00DC2B44 /* Roboto-Bold.ttf */; };
+		9DD4789B28DC0D0B00DC2B44 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DD4789928DC0D0B00DC2B44 /* Roboto-Medium.ttf */; };
+		9DD4789D28DC2B8C00DC2B44 /* WorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4789C28DC2B8C00DC2B44 /* WorkoutTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +38,10 @@
 		9DD4784D28D8706700DC2B44 /* UIView + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		9DD4784E28D8706700DC2B44 /* UIFont + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont + Extensions.swift"; sourceTree = "<group>"; };
 		9DD4784F28D8706700DC2B44 /* UIStackView + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extensions.swift"; sourceTree = "<group>"; };
+		9DD4789528DC081000DC2B44 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
+		9DD4789828DC0D0B00DC2B44 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		9DD4789928DC0D0B00DC2B44 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		9DD4789C28DC2B8C00DC2B44 /* WorkoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +119,7 @@
 		9DD4784428D7443700DC2B44 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9DD4789728DC0CF200DC2B44 /* Fonts */,
 				9DD4783728D72BC500DC2B44 /* LaunchScreen.storyboard */,
 				9DD4783528D72BC500DC2B44 /* Assets.xcassets */,
 				9DD4783A28D72BC500DC2B44 /* Info.plist */,
@@ -121,6 +130,7 @@
 		9DD4784528D74AE500DC2B44 /* MainVC */ = {
 			isa = PBXGroup;
 			children = (
+				9DD4789428DC07EC00DC2B44 /* Cells */,
 				9DD4784628D74B0300DC2B44 /* CalendarView.swift */,
 				9DD4784828D86FE600DC2B44 /* WetherView.swift */,
 			);
@@ -144,6 +154,24 @@
 				9DD4784D28D8706700DC2B44 /* UIView + Extensions.swift */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		9DD4789428DC07EC00DC2B44 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9DD4789528DC081000DC2B44 /* CalendarCollectionViewCell.swift */,
+				9DD4789C28DC2B8C00DC2B44 /* WorkoutTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		9DD4789728DC0CF200DC2B44 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				9DD4789828DC0D0B00DC2B44 /* Roboto-Bold.ttf */,
+				9DD4789928DC0D0B00DC2B44 /* Roboto-Medium.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,8 +232,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DD4789B28DC0D0B00DC2B44 /* Roboto-Medium.ttf in Resources */,
 				9DD4783928D72BC500DC2B44 /* LaunchScreen.storyboard in Resources */,
 				9DD4783628D72BC500DC2B44 /* Assets.xcassets in Resources */,
+				9DD4789A28DC0D0B00DC2B44 /* Roboto-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +250,8 @@
 				9DD4785328D8706700DC2B44 /* UIStackView + Extensions.swift in Sources */,
 				9DD4783128D72BC200DC2B44 /* MainViewController.swift in Sources */,
 				9DD4782D28D72BC200DC2B44 /* AppDelegate.swift in Sources */,
+				9DD4789D28DC2B8C00DC2B44 /* WorkoutTableViewCell.swift in Sources */,
+				9DD4789628DC081000DC2B44 /* CalendarCollectionViewCell.swift in Sources */,
 				9DD4784728D74B0300DC2B44 /* CalendarView.swift in Sources */,
 				9DD4785228D8706700DC2B44 /* UIFont + Extensions.swift in Sources */,
 				9DD4785028D8706700DC2B44 /* UIColor + Extensions.swift in Sources */,

@@ -30,6 +30,7 @@ class MainViewController: UIViewController {
         button.backgroundColor = #colorLiteral(red: 0.9921568627, green: 0.8392156863, blue: 0.3568627451, alpha: 1)
         button.layer.cornerRadius = 10
         button.setTitle("Add workout", for: .normal)
+        button.titleLabel?.font = .robotoMedium12()
         button.tintColor = #colorLiteral(red: 0.1411764706, green: 0.2941176471, blue: 0.262745098, alpha: 1)
         button.setImage(UIImage(named: "addWorkout"), for: .normal)
         button.imageEdgeInsets = UIEdgeInsets(top: 0,
@@ -45,14 +46,37 @@ class MainViewController: UIViewController {
         return button
     }()
     
+    private let workoutTodayLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Workout Today"
+        label.textColor = .specialLightBrown
+        label.font = .robotoMedium14()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let tableView: UITableView = {
+       let tableView = UITableView()
+        tableView.backgroundColor = .none
+        tableView.separatorStyle = .none
+        tableView.bounces = false
+        tableView.showsVerticalScrollIndicator = false
+        tableView.delaysContentTouches = false
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
+    
     private let calendarView = CalendarView()
     private let weatherView = WeatherView()
+    
+    private let idWorkoutTableViewCell = "idWorkoutTableViewCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupViews()
         setConstraints()
+        setDelegates()
     }
     override func viewDidLayoutSubviews() {
         userPhotoImageView.layer.cornerRadius = userPhotoImageView.frame.width / 2
@@ -60,7 +84,7 @@ class MainViewController: UIViewController {
     
     
     private func setupViews() {
-        view.backgroundColor = #colorLiteral(red: 1, green: 0.9347742796, blue: 0.6386776567, alpha: 1)
+        view.backgroundColor = .specialBackground
         
         view.addSubview(calendarView)
         view.addSubview(userPhotoImageView)
@@ -69,10 +93,43 @@ class MainViewController: UIViewController {
         
         view.addSubview(weatherView)
         weatherView.addShadowOnView()
+        
+        view.addSubview(workoutTodayLabel)
+        
+        view.addSubview(tableView)
+        tableView.register(WorkoutTableViewCell.self, forCellReuseIdentifier: idWorkoutTableViewCell)
+    }
+    
+    private func setDelegates() {
+        tableView.dataSource = self
+        tableView.delegate = self
     }
     
     @objc private func addWorkoutButtonTapped() {
         print("addWorkoutTapped")
+    }
+}
+
+extension MainViewController: UITableViewDataSource  {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: idWorkoutTableViewCell, for: indexPath) as?
+        WorkoutTableViewCell
+        else {
+            return UITableViewCell()
+        }
+       return cell
+    }
+}
+
+extension MainViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        100
     }
 }
 
@@ -111,6 +168,18 @@ extension MainViewController {
             weatherView.leadingAnchor.constraint(equalTo: addWorkoutButton.trailingAnchor, constant: 10),
             weatherView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             weatherView.heightAnchor.constraint(equalToConstant: 80)
+        ])
+        
+        NSLayoutConstraint.activate([
+            workoutTodayLabel.topAnchor.constraint(equalTo: addWorkoutButton.bottomAnchor, constant: 10),
+            workoutTodayLabel.leadingAnchor.constraint(equalTo:  view.leadingAnchor, constant: 10)
+        ])
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: workoutTodayLabel.bottomAnchor, constant: 0),
+            tableView.leadingAnchor.constraint(equalTo:  view.leadingAnchor, constant: 0),
+            tableView.trailingAnchor.constraint(equalTo:  view.trailingAnchor, constant: 0),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
         ])
     }
 }
