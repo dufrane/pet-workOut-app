@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D039FB828DD98AD00891205 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D039FB728DD98AD00891205 /* MainTabBarController.swift */; };
+		9D039FBA28DD9EF000891205 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D039FB928DD9EF000891205 /* ProfileViewController.swift */; };
+		9D039FBC28DDA02D00891205 /* NewWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D039FBB28DDA02D00891205 /* NewWorkoutViewController.swift */; };
 		9DD4782D28D72BC200DC2B44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4782C28D72BC200DC2B44 /* AppDelegate.swift */; };
 		9DD4782F28D72BC200DC2B44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4782E28D72BC200DC2B44 /* SceneDelegate.swift */; };
 		9DD4783128D72BC200DC2B44 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4783028D72BC200DC2B44 /* MainViewController.swift */; };
@@ -28,6 +31,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9D039FB728DD98AD00891205 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		9D039FB928DD9EF000891205 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		9D039FBB28DDA02D00891205 /* NewWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWorkoutViewController.swift; sourceTree = "<group>"; };
 		9DD4782928D72BC200DC2B44 /* workOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = workOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DD4782C28D72BC200DC2B44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DD4782E28D72BC200DC2B44 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,11 +86,11 @@
 		9DD4782B28D72BC200DC2B44 /* workOut */ = {
 			isa = PBXGroup;
 			children = (
-				9DD4784A28D8704000DC2B44 /* Extensions */,
 				9DD4784028D743E400DC2B44 /* Application */,
 				9DD4784128D7440500DC2B44 /* Models */,
 				9DD4784228D7440C00DC2B44 /* Views */,
 				9DD4784328D7441400DC2B44 /* Controllers */,
+				9DD4784A28D8704000DC2B44 /* Extensions */,
 				9DD4784428D7443700DC2B44 /* Resources */,
 			);
 			path = workOut;
@@ -118,7 +124,10 @@
 		9DD4784328D7441400DC2B44 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9D039FB728DD98AD00891205 /* MainTabBarController.swift */,
 				9DD4783028D72BC200DC2B44 /* MainViewController.swift */,
+				9D039FBB28DDA02D00891205 /* NewWorkoutViewController.swift */,
+				9D039FB928DD9EF000891205 /* ProfileViewController.swift */,
 				9DF878B428DC854F0026AD5C /* StatisticViewController.swift */,
 			);
 			path = Controllers;
@@ -265,12 +274,15 @@
 			files = (
 				9DD4785128D8706700DC2B44 /* UIView + Extensions.swift in Sources */,
 				9DD4785328D8706700DC2B44 /* UIStackView + Extensions.swift in Sources */,
+				9D039FB828DD98AD00891205 /* MainTabBarController.swift in Sources */,
 				9DF878B328DC840A0026AD5C /* UILabel + Extensions.swift in Sources */,
 				9DD4783128D72BC200DC2B44 /* MainViewController.swift in Sources */,
 				9DD4782D28D72BC200DC2B44 /* AppDelegate.swift in Sources */,
+				9D039FBA28DD9EF000891205 /* ProfileViewController.swift in Sources */,
 				9DD4789D28DC2B8C00DC2B44 /* WorkoutTableViewCell.swift in Sources */,
 				9DD4789628DC081000DC2B44 /* CalendarCollectionViewCell.swift in Sources */,
 				9DD4784728D74B0300DC2B44 /* CalendarView.swift in Sources */,
+				9D039FBC28DDA02D00891205 /* NewWorkoutViewController.swift in Sources */,
 				9DF878B528DC854F0026AD5C /* StatisticViewController.swift in Sources */,
 				9DD4785228D8706700DC2B44 /* UIFont + Extensions.swift in Sources */,
 				9DD4785028D8706700DC2B44 /* UIColor + Extensions.swift in Sources */,

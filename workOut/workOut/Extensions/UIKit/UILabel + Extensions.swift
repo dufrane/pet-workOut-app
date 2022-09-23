@@ -2,7 +2,7 @@
 //  UILabel + Extensions.swift
 //  workOut
 //
-//  Created by Dmytro Vasylenko on 22  .09.2022.
+//  Created by Dmytro Vasylenko on 22.09.2022.
 //
 
 import UIKit

@@ -82,7 +82,6 @@ class MainViewController: UIViewController {
         userPhotoImageView.layer.cornerRadius = userPhotoImageView.frame.width / 2
     }
     
-    
     private func setupViews() {
         view.backgroundColor = .specialBackground
         
@@ -106,9 +105,14 @@ class MainViewController: UIViewController {
     }
     
     @objc private func addWorkoutButtonTapped() {
-        print("addWorkoutTapped")
+        
+        let newWorkoutViewController = NewWorkoutViewController()
+        newWorkoutViewController.modalPresentationStyle = .fullScreen
+        present(newWorkoutViewController, animated: true)
     }
 }
+
+// MARK: - UITableViewDataSource
 
 extension MainViewController: UITableViewDataSource  {
     
@@ -125,6 +129,8 @@ extension MainViewController: UITableViewDataSource  {
        return cell
     }
 }
+
+//MARK: - UITableViewDelegate
 
 extension MainViewController: UITableViewDelegate {
     
