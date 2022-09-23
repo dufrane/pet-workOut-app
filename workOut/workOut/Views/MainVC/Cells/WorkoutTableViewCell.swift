@@ -101,7 +101,8 @@ class WorkoutTableViewCell: UITableViewCell {
                                       axis: .horizontal,
                                       spacing: 10)
         addSubview(labelsStackView)
-        addSubview(startButton)
+        addSubview(contentView)
+        contentView.addSubview(startButton)
     }
     
     @objc private func startButtonTapped() {

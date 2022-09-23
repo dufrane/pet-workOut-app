@@ -22,6 +22,9 @@
 		9DD4789A28DC0D0B00DC2B44 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DD4789828DC0D0B00DC2B44 /* Roboto-Bold.ttf */; };
 		9DD4789B28DC0D0B00DC2B44 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DD4789928DC0D0B00DC2B44 /* Roboto-Medium.ttf */; };
 		9DD4789D28DC2B8C00DC2B44 /* WorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4789C28DC2B8C00DC2B44 /* WorkoutTableViewCell.swift */; };
+		9DF878B328DC840A0026AD5C /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF878B228DC840A0026AD5C /* UILabel + Extensions.swift */; };
+		9DF878B528DC854F0026AD5C /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF878B428DC854F0026AD5C /* StatisticViewController.swift */; };
+		9DF878B728DC85E70026AD5C /* StatisticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF878B628DC85E70026AD5C /* StatisticTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,9 @@
 		9DD4789828DC0D0B00DC2B44 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		9DD4789928DC0D0B00DC2B44 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		9DD4789C28DC2B8C00DC2B44 /* WorkoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewCell.swift; sourceTree = "<group>"; };
+		9DF878B228DC840A0026AD5C /* UILabel + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
+		9DF878B428DC854F0026AD5C /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
+		9DF878B628DC85E70026AD5C /* StatisticTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,7 @@
 		9DD4784228D7440C00DC2B44 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9DF878B828DC85FC0026AD5C /* StatisticVC */,
 				9DD4784528D74AE500DC2B44 /* MainVC */,
 			);
 			path = Views;
@@ -112,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				9DD4783028D72BC200DC2B44 /* MainViewController.swift */,
+				9DF878B428DC854F0026AD5C /* StatisticViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -152,6 +160,7 @@
 				9DD4784E28D8706700DC2B44 /* UIFont + Extensions.swift */,
 				9DD4784F28D8706700DC2B44 /* UIStackView + Extensions.swift */,
 				9DD4784D28D8706700DC2B44 /* UIView + Extensions.swift */,
+				9DF878B228DC840A0026AD5C /* UILabel + Extensions.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -172,6 +181,14 @@
 				9DD4789928DC0D0B00DC2B44 /* Roboto-Medium.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		9DF878B828DC85FC0026AD5C /* StatisticVC */ = {
+			isa = PBXGroup;
+			children = (
+				9DF878B628DC85E70026AD5C /* StatisticTableViewCell.swift */,
+			);
+			path = StatisticVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,14 +265,17 @@
 			files = (
 				9DD4785128D8706700DC2B44 /* UIView + Extensions.swift in Sources */,
 				9DD4785328D8706700DC2B44 /* UIStackView + Extensions.swift in Sources */,
+				9DF878B328DC840A0026AD5C /* UILabel + Extensions.swift in Sources */,
 				9DD4783128D72BC200DC2B44 /* MainViewController.swift in Sources */,
 				9DD4782D28D72BC200DC2B44 /* AppDelegate.swift in Sources */,
 				9DD4789D28DC2B8C00DC2B44 /* WorkoutTableViewCell.swift in Sources */,
 				9DD4789628DC081000DC2B44 /* CalendarCollectionViewCell.swift in Sources */,
 				9DD4784728D74B0300DC2B44 /* CalendarView.swift in Sources */,
+				9DF878B528DC854F0026AD5C /* StatisticViewController.swift in Sources */,
 				9DD4785228D8706700DC2B44 /* UIFont + Extensions.swift in Sources */,
 				9DD4785028D8706700DC2B44 /* UIColor + Extensions.swift in Sources */,
 				9DD4784928D86FE600DC2B44 /* WetherView.swift in Sources */,
+				9DF878B728DC85E70026AD5C /* StatisticTableViewCell.swift in Sources */,
 				9DD4782F28D72BC200DC2B44 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
