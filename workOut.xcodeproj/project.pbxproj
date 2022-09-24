@@ -10,6 +10,8 @@
 		9D039FB828DD98AD00891205 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D039FB728DD98AD00891205 /* MainTabBarController.swift */; };
 		9D039FBA28DD9EF000891205 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D039FB928DD9EF000891205 /* ProfileViewController.swift */; };
 		9D039FBC28DDA02D00891205 /* NewWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D039FBB28DDA02D00891205 /* NewWorkoutViewController.swift */; };
+		9D039FBF28DF344700891205 /* DateAndRepeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D039FBE28DF344700891205 /* DateAndRepeatView.swift */; };
+		9D039FC128DF34A100891205 /* RepsOrTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D039FC028DF34A100891205 /* RepsOrTimerView.swift */; };
 		9DD4782D28D72BC200DC2B44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4782C28D72BC200DC2B44 /* AppDelegate.swift */; };
 		9DD4782F28D72BC200DC2B44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4782E28D72BC200DC2B44 /* SceneDelegate.swift */; };
 		9DD4783128D72BC200DC2B44 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4783028D72BC200DC2B44 /* MainViewController.swift */; };
@@ -28,12 +30,16 @@
 		9DF878B328DC840A0026AD5C /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF878B228DC840A0026AD5C /* UILabel + Extensions.swift */; };
 		9DF878B528DC854F0026AD5C /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF878B428DC854F0026AD5C /* StatisticViewController.swift */; };
 		9DF878B728DC85E70026AD5C /* StatisticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF878B628DC85E70026AD5C /* StatisticTableViewCell.swift */; };
+		BF0AE299661861EF88E39B50 /* Pods_workOut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3A7FCBA727664018CE6CAF /* Pods_workOut.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D3A7FCBA727664018CE6CAF /* Pods_workOut.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_workOut.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D039FB728DD98AD00891205 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		9D039FB928DD9EF000891205 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9D039FBB28DDA02D00891205 /* NewWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWorkoutViewController.swift; sourceTree = "<group>"; };
+		9D039FBE28DF344700891205 /* DateAndRepeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndRepeatView.swift; sourceTree = "<group>"; };
+		9D039FC028DF34A100891205 /* RepsOrTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsOrTimerView.swift; sourceTree = "<group>"; };
 		9DD4782928D72BC200DC2B44 /* workOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = workOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DD4782C28D72BC200DC2B44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DD4782E28D72BC200DC2B44 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +60,8 @@
 		9DF878B228DC840A0026AD5C /* UILabel + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
 		9DF878B428DC854F0026AD5C /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		9DF878B628DC85E70026AD5C /* StatisticTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTableViewCell.swift; sourceTree = "<group>"; };
+		AEAE9AE6DF08CC22F9DB9B1B /* Pods-workOut.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workOut.debug.xcconfig"; path = "Target Support Files/Pods-workOut/Pods-workOut.debug.xcconfig"; sourceTree = "<group>"; };
+		FAD3AC562164E8E2DC14BAF9 /* Pods-workOut.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workOut.release.xcconfig"; path = "Target Support Files/Pods-workOut/Pods-workOut.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,17 +69,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF0AE299661861EF88E39B50 /* Pods_workOut.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D039FBD28DF341300891205 /* NewWorkoutVC */ = {
+			isa = PBXGroup;
+			children = (
+				9D039FBE28DF344700891205 /* DateAndRepeatView.swift */,
+				9D039FC028DF34A100891205 /* RepsOrTimerView.swift */,
+			);
+			path = NewWorkoutVC;
+			sourceTree = "<group>";
+		};
 		9DD4782028D72BC200DC2B44 = {
 			isa = PBXGroup;
 			children = (
 				9DD4782B28D72BC200DC2B44 /* workOut */,
 				9DD4782A28D72BC200DC2B44 /* Products */,
+				AD2689ACA02F1F9C60E93CAC /* Pods */,
+				B5712249B0656BC4920E3BD1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -115,8 +135,9 @@
 		9DD4784228D7440C00DC2B44 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9DF878B828DC85FC0026AD5C /* StatisticVC */,
 				9DD4784528D74AE500DC2B44 /* MainVC */,
+				9D039FBD28DF341300891205 /* NewWorkoutVC */,
+				9DF878B828DC85FC0026AD5C /* StatisticVC */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -200,6 +221,24 @@
 			path = StatisticVC;
 			sourceTree = "<group>";
 		};
+		AD2689ACA02F1F9C60E93CAC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AEAE9AE6DF08CC22F9DB9B1B /* Pods-workOut.debug.xcconfig */,
+				FAD3AC562164E8E2DC14BAF9 /* Pods-workOut.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B5712249B0656BC4920E3BD1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1D3A7FCBA727664018CE6CAF /* Pods_workOut.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -207,9 +246,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9DD4783D28D72BC500DC2B44 /* Build configuration list for PBXNativeTarget "workOut" */;
 			buildPhases = (
+				7D4C0014EAB7EC1AC9D93D89 /* [CP] Check Pods Manifest.lock */,
 				9DD4782528D72BC200DC2B44 /* Sources */,
 				9DD4782628D72BC200DC2B44 /* Frameworks */,
 				9DD4782728D72BC200DC2B44 /* Resources */,
+				B29FA92C80FAFF99C6EE0F74 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -267,6 +308,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7D4C0014EAB7EC1AC9D93D89 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-workOut-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B29FA92C80FAFF99C6EE0F74 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-workOut/Pods-workOut-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-workOut/Pods-workOut-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-workOut/Pods-workOut-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9DD4782528D72BC200DC2B44 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -287,8 +370,10 @@
 				9DD4785228D8706700DC2B44 /* UIFont + Extensions.swift in Sources */,
 				9DD4785028D8706700DC2B44 /* UIColor + Extensions.swift in Sources */,
 				9DD4784928D86FE600DC2B44 /* WetherView.swift in Sources */,
+				9D039FBF28DF344700891205 /* DateAndRepeatView.swift in Sources */,
 				9DF878B728DC85E70026AD5C /* StatisticTableViewCell.swift in Sources */,
 				9DD4782F28D72BC200DC2B44 /* SceneDelegate.swift in Sources */,
+				9D039FC128DF34A100891205 /* RepsOrTimerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +507,7 @@
 		};
 		9DD4783E28D72BC500DC2B44 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AEAE9AE6DF08CC22F9DB9B1B /* Pods-workOut.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -453,6 +539,7 @@
 		};
 		9DD4783F28D72BC500DC2B44 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAD3AC562164E8E2DC14BAF9 /* Pods-workOut.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
