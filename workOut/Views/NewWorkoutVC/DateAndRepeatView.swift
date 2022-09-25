@@ -13,6 +13,7 @@ class DateAndRepeatView: UIView {
        let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
         datePicker.setValue(UIColor.specialDarkGreen, forKeyPath: "textColor")
+        datePicker.tintColor = .specialGreen
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         return datePicker
     }()
