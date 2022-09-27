@@ -73,6 +73,15 @@ class DateAndRepeatView: UIView {
         getDateAndRepeat()
     }
     
+    private func refreshWorkoutObjects() {
+        datePicker.setDate(Date(), animated: true)
+        repeatSwitch.isOn = true
+    }
+    
+    public func refreshDatePickerAndSwitch() {
+        refreshWorkoutObjects()
+    }
+    
     private func setConstraints() {
         
         NSLayoutConstraint.activate([

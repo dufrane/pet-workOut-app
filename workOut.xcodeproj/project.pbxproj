@@ -15,6 +15,7 @@
 		9D7051ED28E023E50095F3DB /* WorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7051EC28E023E50095F3DB /* WorkoutModel.swift */; };
 		9D7051F028E025580095F3DB /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7051EF28E025580095F3DB /* RealmManager.swift */; };
 		9D7051F228E0303E0095F3DB /* Date + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7051F128E0303E0095F3DB /* Date + Extensions.swift */; };
+		9D7051F728E2FC770095F3DB /* SimpleAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7051F628E2FC770095F3DB /* SimpleAlert.swift */; };
 		9DD4782D28D72BC200DC2B44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4782C28D72BC200DC2B44 /* AppDelegate.swift */; };
 		9DD4782F28D72BC200DC2B44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4782E28D72BC200DC2B44 /* SceneDelegate.swift */; };
 		9DD4783128D72BC200DC2B44 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4783028D72BC200DC2B44 /* MainViewController.swift */; };
@@ -46,6 +47,7 @@
 		9D7051EC28E023E50095F3DB /* WorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutModel.swift; sourceTree = "<group>"; };
 		9D7051EF28E025580095F3DB /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		9D7051F128E0303E0095F3DB /* Date + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extensions.swift"; sourceTree = "<group>"; };
+		9D7051F628E2FC770095F3DB /* SimpleAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAlert.swift; sourceTree = "<group>"; };
 		9DD4782928D72BC200DC2B44 /* workOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = workOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DD4782C28D72BC200DC2B44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DD4782E28D72BC200DC2B44 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +99,14 @@
 				9D7051EF28E025580095F3DB /* RealmManager.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		9D7051F528E2FC4A0095F3DB /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				9D7051F628E2FC770095F3DB /* SimpleAlert.swift */,
+			);
+			path = Alerts;
 			sourceTree = "<group>";
 		};
 		9DD4782028D72BC200DC2B44 = {
@@ -151,6 +161,7 @@
 		9DD4784228D7440C00DC2B44 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9D7051F528E2FC4A0095F3DB /* Alerts */,
 				9DD4784528D74AE500DC2B44 /* MainVC */,
 				9D039FBD28DF341300891205 /* NewWorkoutVC */,
 				9DF878B828DC85FC0026AD5C /* StatisticVC */,
@@ -387,6 +398,7 @@
 				9DF878B528DC854F0026AD5C /* StatisticViewController.swift in Sources */,
 				9DD4785228D8706700DC2B44 /* UIFont + Extensions.swift in Sources */,
 				9DD4785028D8706700DC2B44 /* UIColor + Extensions.swift in Sources */,
+				9D7051F728E2FC770095F3DB /* SimpleAlert.swift in Sources */,
 				9DD4784928D86FE600DC2B44 /* WetherView.swift in Sources */,
 				9D7051F228E0303E0095F3DB /* Date + Extensions.swift in Sources */,
 				9D039FBF28DF344700891205 /* DateAndRepeatView.swift in Sources */,
