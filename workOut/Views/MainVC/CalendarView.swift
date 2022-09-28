@@ -59,6 +59,11 @@ extension CalendarView: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: idCalendarCell, for: indexPath) as? CalendarCollectionViewCell else {
             return UICollectionViewCell()
         }
+        
+        let dateTimeZone = Date().localDate()
+        let weekArrya = dateTimeZone.getWeekArray()
+        
+        cell.dateForCell(numberOfDay: weekArrya[1][indexPath.item], dayOfWeek: weekArrya[0][indexPath.item])
         return cell
     }
 }
