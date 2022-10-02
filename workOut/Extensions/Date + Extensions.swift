@@ -26,7 +26,7 @@ extension Date {
         calendar.timeZone = TimeZone(abbreviation: "UTC") ?? .current
         
         for index in -6...0 {
-            let date = calendar.date(byAdding: .day, value: index, to: self) ?? Date
+            let date = calendar.date(byAdding: .day, value: index, to: self) ?? Date()
             let day = calendar.component(.day, from: date)
             weekArray[1].append("\(day)")
             let weekday = formatter.string(from: date)
@@ -35,9 +35,35 @@ extension Date {
         return weekArray
     }
     
+    func startEndDate() -> (Date, Date) {
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        
+        let calendar = Calendar.current
+        let day = calendar.component(.day, from: self)
+        let month = calendar.component(.month, from: self)
+        let year = calendar.component(.year, from: self)
+        let dateStart = formatter.date(from: "\(year)/\(month)/\(day)") ?? Date()
+        
+        let local = dateStart.localDate()
+        let dateEnd: Date = {
+            let components = DateComponents(day: 1 )
+            return calendar.date(byAdding: components, to: local) ?? Date()
+        }()
+
+        return(local, dateEnd)
+    }
+    
     func getWeekDayNumber() -> Int {
         let calendar = Calendar.current
         let weekDay = calendar.component(.weekday, from: self)
         return weekDay
     }
+    
+    func offsetDays(days: Int) -> Date {
+        let offsetDate = Calendar.current.date(byAdding: .day, value: -days, to: self) ?? Date()
+        return offsetDate
+    }
+    
 }

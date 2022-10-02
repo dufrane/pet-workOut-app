@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MainViewController: UIViewController {
     
@@ -69,6 +70,9 @@ class MainViewController: UIViewController {
     private let calendarView = CalendarView()
     private let weatherView = WeatherView()
     
+    private let localRealm = try! Realm()
+    private var workoutArray: Results<WorkoutModel>!
+    
     private let idWorkoutTableViewCell = "idWorkoutTableViewCell"
 
     override func viewDidLoad() {
@@ -102,6 +106,7 @@ class MainViewController: UIViewController {
     private func setDelegates() {
         tableView.dataSource = self
         tableView.delegate = self
+        calendarView.cellCollectionViewDelegate = self
     }
     
     @objc private func addWorkoutButtonTapped() {
@@ -109,6 +114,29 @@ class MainViewController: UIViewController {
         let newWorkoutViewController = NewWorkoutViewController()
         newWorkoutViewController.modalPresentationStyle = .fullScreen
         present(newWorkoutViewController, animated: true)
+    }
+    
+    private func getWorkouts(date: Date) {
+        
+        let weekday = date.getWeekDayNumber()
+        let dateStart = date.startEndDate().0
+        let dateEnd = date.startEndDate().1
+        
+        let predicateRepeat = NSPredicate(format: "workoutNumberOfDay = \(weekday) AND workoutRepeat = true")
+        let predicateUrepeat = NSPredicate(format: "workoutRepeat = false AND workoutDate BETWEEN %@", [dateStart, dateEnd])
+        let compound = NSCompoundPredicate(type: .or, subpredicates: [predicateRepeat, predicateUrepeat])
+        
+        workoutArray = localRealm.objects(WorkoutModel.self).filter(compound).sorted(byKeyPath: "workoutName")
+        
+        tableView.reloadData()
+    }
+}
+
+
+extension MainViewController: SelectCollectionItemProtocol {
+    
+    func selectItem(date: Date) {
+        print(date.startEndDate().0, date.startEndDate().1)
     }
 }
 
