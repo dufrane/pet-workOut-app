@@ -25,11 +25,11 @@ extension Date {
         var calendar = Calendar.current
         calendar.timeZone = TimeZone(abbreviation: "UTC") ?? .current
         
-        for index in -6...0 {
+        for index in -7...1 {
             let date = calendar.date(byAdding: .day, value: index, to: self) ?? Date()
-            let day = calendar.component(.day, from: date)
+            let day = calendar.component(.day, from: date.localDate())
             weekArray[1].append("\(day)")
-            let weekday = formatter.string(from: date)
+            let weekday = formatter.string(from: date.localDate())
             weekArray[0].append(weekday)
         }
         return weekArray

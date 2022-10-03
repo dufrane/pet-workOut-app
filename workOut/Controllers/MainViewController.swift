@@ -75,6 +75,13 @@ class MainViewController: UIViewController {
     
     private let idWorkoutTableViewCell = "idWorkoutTableViewCell"
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        getWorkouts(date: Date())
+        tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -136,7 +143,7 @@ class MainViewController: UIViewController {
 extension MainViewController: SelectCollectionItemProtocol {
     
     func selectItem(date: Date) {
-        print(date.startEndDate().0, date.startEndDate().1)
+        getWorkouts(date: date)
     }
 }
 
@@ -145,7 +152,7 @@ extension MainViewController: SelectCollectionItemProtocol {
 extension MainViewController: UITableViewDataSource  {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        workoutArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
