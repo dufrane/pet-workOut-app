@@ -6,11 +6,16 @@
 //
 
 import UIKit
+import RealmSwift
+
+protocol StartWorkoutProtocol: AnyObject {
+    func startButtonTapped(model: WorkoutModel)
+}
 
 class WorkoutTableViewCell: UITableViewCell {
     
     private let backgroundCell: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.layer.cornerRadius = 20
         view.backgroundColor = .specialBrown
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -18,7 +23,7 @@ class WorkoutTableViewCell: UITableViewCell {
     }()
     
     private let workoutBackgroundView: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.layer.cornerRadius = 20
         view.backgroundColor = .specialBackground
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -26,7 +31,7 @@ class WorkoutTableViewCell: UITableViewCell {
     }()
     
     private let workoutImageView: UIImageView = {
-       let imageView = UIImageView()
+        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .black
         
@@ -36,7 +41,7 @@ class WorkoutTableViewCell: UITableViewCell {
     }()
     
     private let workoutNameLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "Pull Upps"
         label.textColor = .specialBlack
         label.font = .robotoMedium22()
@@ -45,7 +50,7 @@ class WorkoutTableViewCell: UITableViewCell {
     }()
     
     private let workoutRepsLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "Reps: 10"
         label.textColor = .specialGray
         label.font = .robotoMedium16()
@@ -54,7 +59,7 @@ class WorkoutTableViewCell: UITableViewCell {
     }()
     
     private let workoutSetsLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "Sets: 2"
         label.textColor = .specialGray
         label.font = .robotoMedium16()
@@ -66,9 +71,6 @@ class WorkoutTableViewCell: UITableViewCell {
         let button = UIButton(type: .system)
         button.layer.cornerRadius = 10
         button.addShadowOnView()
-        button.backgroundColor = .specialYellow
-        button.tintColor = .specialDarkGreen
-        button.setTitle("START", for: .normal)
         button.titleLabel?.font = .robotoBold16()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
@@ -76,6 +78,9 @@ class WorkoutTableViewCell: UITableViewCell {
     }()
     
     var labelsStackView = UIStackView()
+    var workoutModel = WorkoutModel()
+    
+    weak var cellStartWorkoutDelegate: StartWorkoutProtocol?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -106,10 +111,12 @@ class WorkoutTableViewCell: UITableViewCell {
     }
     
     @objc private func startButtonTapped() {
-        print("startButtonTapped")
+        cellStartWorkoutDelegate?.startButtonTapped(model: workoutModel)
     }
-
-    private func cellConfigure(model: WorkoutModel) {
+    
+    func cellConfigure(model: WorkoutModel) {
+        
+        workoutModel = model
         
         workoutNameLabel.text = model.workoutName
         
@@ -119,13 +126,23 @@ class WorkoutTableViewCell: UITableViewCell {
         workoutRepsLabel.text = model.workoutTimer == 0 ? "Reps: \(model.workoutReps)" : "Timer: \(min) min \(sec) sec"
         workoutSetsLabel.text = "Sets: \(model.workoutSets)"
         
+        if model.workoutStatus {
+            startButton.setTitle("COMPLETE", for: .normal)
+            startButton.tintColor = .white
+            startButton.backgroundColor = .specialGreen
+            startButton.isEnabled = false
+        } else {
+            startButton.setTitle("START", for: .normal)
+            startButton.tintColor = .specialDarkGreen
+            startButton.backgroundColor = .specialYellow
+            startButton.isEnabled = true
+        }
+        
         guard let imageData = model.workoutImage else { return }
         guard let image = UIImage(data: imageData) else { return }
         
-        workoutImageView.image = image
-        
+        workoutImageView.image = image.withRenderingMode(.alwaysTemplate)
     }
-    
 }
 
 extension WorkoutTableViewCell {

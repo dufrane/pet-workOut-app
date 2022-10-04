@@ -6,6 +6,13 @@
 //
 
 import UIKit
+import RealmSwift
+
+struct DifferenceWorkout {
+    let name: String
+    let lastReps: Int
+    let firstReps: Int
+}
 
 class StatisticViewController: UIViewController {
     
@@ -50,6 +57,11 @@ class StatisticViewController: UIViewController {
     
     private let idStatisticTableViewCell = "idStatisticTableViewCell"
     
+    private let localRealm = try! Realm()
+    private var workoutArray: Results<WorkoutModel>!
+    
+    private var differenceArray = [DifferenceWorkout]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -76,10 +88,50 @@ class StatisticViewController: UIViewController {
     }
     
     @objc private func segmentedChange() {
+        
+        let dateToday = Date().localDate()
+        differenceArray = [DifferenceWorkout]()
+        
         if segmentedControl.selectedSegmentIndex == 0 {
-            print("Week")
+            let dateStart = dateToday.offsetDays(days: 7)
+            getDifferenceModel(dateStart: dateStart)
         } else {
-            print("Month")
+            let dateStart = dateToday.offsetMonth(month: 1)
+            getDifferenceModel(dateStart: dateStart)
+        }
+        tableView.reloadData()
+    }
+    
+    private func getWorkoutsName() -> [String] {
+        
+        var nameArray = [String]()
+        workoutArray = localRealm.objects(WorkoutModel.self)
+        
+        for workoutModel in workoutArray {
+            if !nameArray.contains(workoutModel.workoutName){
+                nameArray.append(workoutModel.workoutName)
+            }
+        }
+        return nameArray
+    }
+    
+    private func getDifferenceModel(dateStart: Date) {
+        
+        let dateEnd = Date().localDate()
+        let nameArray = getWorkoutsName()
+        
+        for name in nameArray {
+            
+            let predicateDifference = NSPredicate(format: "workoutName = '\(name)' AND workoutDate BETWEEN %@", [dateStart, dateEnd])
+            workoutArray = localRealm.objects(WorkoutModel.self).filter(predicateDifference).sorted(byKeyPath: "workoutDate")
+            
+            guard let last = workoutArray.last?.workoutReps,
+                  let first = workoutArray.first?.workoutReps else { return
+            }
+            
+            let differenceWorkout = DifferenceWorkout(name: name, lastReps: last, firstReps: first)
+            
+            differenceArray.append(differenceWorkout)
         }
     }
 }

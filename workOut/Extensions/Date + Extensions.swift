@@ -25,7 +25,7 @@ extension Date {
         var calendar = Calendar.current
         calendar.timeZone = TimeZone(abbreviation: "UTC") ?? .current
         
-        for index in -7...1 {
+        for index in -6...0 {
             let date = calendar.date(byAdding: .day, value: index, to: self) ?? Date()
             let day = calendar.component(.day, from: date.localDate())
             weekArray[1].append("\(day)")
@@ -66,4 +66,8 @@ extension Date {
         return offsetDate
     }
     
+    func offsetMonth(month: Int) -> Date {
+        let offsetDate = Calendar.current.date(byAdding: .month, value: -month, to: self) ?? Date()
+        return offsetDate
+    }
 }

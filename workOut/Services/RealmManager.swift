@@ -20,4 +20,10 @@ class RealmManager {
             localRealm.add(model)
         }
     }
+    
+    func deleteWorkoutModel(model: WorkoutModel) {
+        try! localRealm.write{
+            localRealm.delete(model)
+        }
+    }
 }
