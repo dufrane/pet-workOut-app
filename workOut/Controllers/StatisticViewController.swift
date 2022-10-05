@@ -68,6 +68,7 @@ class StatisticViewController: UIViewController {
         setupViews()
         setConstraints()
         setDelegates()
+        setStartScreen()
     }
     
     private func setupViews() {
@@ -134,6 +135,13 @@ class StatisticViewController: UIViewController {
             differenceArray.append(differenceWorkout)
         }
     }
+    
+    private func setStartScreen() {
+        let dateToday = Date().localDate()
+        getDifferenceModel(dateStart: dateToday.offsetDays(days: 7))
+        tableView.reloadData()
+    }
+    
 }
 
 // MARK: - UITableViewDataSource
@@ -141,14 +149,15 @@ class StatisticViewController: UIViewController {
 extension StatisticViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        differenceArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: idStatisticTableViewCell,
-                                                       for: indexPath) as? StatisticTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: idStatisticTableViewCell, for: indexPath) as? StatisticTableViewCell else {
             return UITableViewCell()
         }
+        let differenceModel = differenceArray[indexPath.row]
+        cell.cellConfigure(differenceWorkout: differenceModel)
         return cell
     }
 }

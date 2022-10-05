@@ -34,12 +34,12 @@ class StatisticTableViewCell: UITableViewCell {
     private var stackView = UIStackView()
     
     private let lineView: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.backgroundColor = .specialLine
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -64,7 +64,23 @@ class StatisticTableViewCell: UITableViewCell {
         addSubview(stackView)
         addSubview(lineView)
     }
-
+    
+    func cellConfigure(differenceWorkout: DifferenceWorkout) {
+        
+        nameLabel.text = differenceWorkout.name
+        beforeLabel.text = "Before: \(differenceWorkout.firstReps)"
+        nowLabel.text = "Now: \(differenceWorkout.lastReps)"
+        
+        let difference = differenceWorkout.lastReps - differenceWorkout.firstReps
+        differenceLabel.text = "\(difference)"
+        
+        switch difference {
+        case ..<0: differenceLabel.textColor = .specialGreen
+        case 1...: differenceLabel.textColor = .specialDarkYellow
+        default: differenceLabel.textColor = .specialGray
+        }
+    }
+    
     private func setConstraints() {
         
         NSLayoutConstraint.activate([
