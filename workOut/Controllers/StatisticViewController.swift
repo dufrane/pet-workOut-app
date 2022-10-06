@@ -62,6 +62,13 @@ class StatisticViewController: UIViewController {
     
     private var differenceArray = [DifferenceWorkout]()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        differenceArray = [DifferenceWorkout]()
+        setStartScreen()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -162,11 +162,19 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController: StartWorkoutProtocol {
+    
     func startButtonTapped(model: WorkoutModel) {
-        print(model)
+        if model.workoutTimer == 0 {
+            let startWorkoutViewController = RepsWorkoutViewController()
+            startWorkoutViewController.modalPresentationStyle = .fullScreen
+            startWorkoutViewController.workoutModel = model
+            present(startWorkoutViewController, animated: true)
+        } else {
+            let timerWorkoutViewController = TimerWorkoutViewController()
+            timerWorkoutViewController.modalPresentationStyle = .fullScreen
+            present(timerWorkoutViewController, animated: true)
+        }
     }
-    
-    
 }
 
 extension MainViewController: SelectCollectionItemProtocol {
