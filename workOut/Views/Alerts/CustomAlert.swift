@@ -10,7 +10,7 @@ import UIKit
 class CustomAlert {
     
     private let backgroundView: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.backgroundColor = .black
         view.alpha = 0
         
@@ -18,12 +18,13 @@ class CustomAlert {
     }()
     
     private let alertView: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.backgroundColor = .specialBackground
         view.layer.cornerRadius = 20
         return view
     }()
     
+    private var buttonAction: ((String, String) -> Void)?
     private let scrollView = UIScrollView()
     
     private var mainView: UIView?
@@ -53,12 +54,12 @@ class CustomAlert {
         
         let sportsmanImageView = UIImageView(frame: CGRect(
             x: (alertView.frame.width - alertView.frame.height * 0.4) / 2,
-                                                           y: 30,
+            y: 30,
             width: alertView.frame.height * 0.4,
             height: alertView.frame.height * 0.4))
         sportsmanImageView.image = UIImage(named: "sportsmanAlert")
         sportsmanImageView.contentMode = .scaleAspectFit
-        scrollView.addSubview(sportsmanImageView)
+        alertView.addSubview(sportsmanImageView)
         
         let editingLabel = UILabel(frame: CGRect(
             x: 10 ,
@@ -84,7 +85,7 @@ class CustomAlert {
             y: setsLabel.frame.maxY,
             width: alertView.frame.width - 40,
             height: 30)
-                                
+        
         setTextField.backgroundColor = .specialBrown
         setTextField.borderStyle = .none
         setTextField.layer.cornerRadius = 10
@@ -115,7 +116,7 @@ class CustomAlert {
             y: repsOrTimerLabel.frame.maxY,
             width: alertView.frame.width - 40,
             height: 30)
-                                
+        
         repsTextField.backgroundColor = .specialBrown
         repsTextField.borderStyle = .none
         repsTextField.layer.cornerRadius = 10
@@ -134,19 +135,57 @@ class CustomAlert {
         
         let okButton = UIButton(frame: CGRect(
             x: 50,
-            y: repsTextField.frame.maxY,
+            y: repsTextField.frame.maxY + 15,
             width: alertView.frame.width - 100,
             height: 35))
-        okButton.backgroundColor = .specialBackground
+        okButton.backgroundColor = .specialGreen
         okButton.setTitle("OK", for: .normal)
         okButton.titleLabel?.textColor = .white
         okButton.titleLabel?.font = .robotoMedium18()
         okButton.layer.cornerRadius = 10
         okButton.addTarget(self, action: #selector(okButtonTapped), for: .touchUpInside)
         alertView.addSubview(okButton)
+        
+        buttonAction = completion
+        
+        UIView.animate(withDuration: 0.3) {
+            self.backgroundView.alpha = 0.8
+        } completion: { done in
+            if done {
+                UIView.animate(withDuration: 0.3) {
+                    self.alertView.center = parentView.center
+                }
+            }
+        }
     }
     
     @objc private func okButtonTapped() {
         
+        guard let setsNumber = setTextField.text else { return }
+        guard let repsNumber = repsTextField.text else { return }
+        buttonAction?(setsNumber, repsNumber)
+        
+        guard let targetView = mainView else { return }
+        
+        UIView.animate(withDuration: 0.3) {
+            self.alertView.frame = CGRect(x: 40,
+                                          y: targetView.frame.height,
+                                          width: targetView.frame.width - 80, height: 420)
+        } completion: { done in
+            if done {
+                UIView.animate(withDuration: 0.3) {
+                    self.backgroundView.alpha = 0
+                } completion: { done in
+                    if done {
+                        self.alertView.removeFromSuperview()
+                        self.backgroundView.removeFromSuperview()
+                        self.scrollView.removeFromSuperview()
+                        self.setTextField.text = ""
+                        self.repsTextField.text = ""
+                        
+                    }
+                }
+            }
+        }
     }
 }
