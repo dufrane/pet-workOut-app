@@ -35,6 +35,8 @@ class CustomAlert {
     func alertCustom(viewController: UIViewController, repsOrTimer: String,
                      completion: @escaping(String, String) -> Void ) {
         
+        registerForKeyboardNotification()
+        
         guard let parentView = viewController.view else { return }
         mainView = parentView
         
@@ -182,10 +184,41 @@ class CustomAlert {
                         self.scrollView.removeFromSuperview()
                         self.setTextField.text = ""
                         self.repsTextField.text = ""
-                        
+                        self.removeForKeyboardNotification()
                     }
                 }
             }
         }
+    }
+    
+    private func registerForKeyboardNotification() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(kbWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(kbWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    private func removeForKeyboardNotification() {
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillShowNotification,
+                                                  object: nil)
+        
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillHideNotification,
+                                                  object: nil)
+        
+    }
+    
+    @objc private func kbWillShow() {
+        scrollView.contentOffset = CGPoint(x: 0, y: 100)
+    }
+    
+    @objc private func kbWillHide() {
+        scrollView.contentOffset = CGPoint.zero
     }
 }

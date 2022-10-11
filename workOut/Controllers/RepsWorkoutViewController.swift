@@ -35,17 +35,17 @@ class RepsWorkoutViewController: UIViewController {
         return imageView
     }()
     
-    private lazy var  finishButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.backgroundColor = .specialGreen
-        button.layer.cornerRadius = 10
-        button.setTitle("FINISH", for: .normal)
-        button.tintColor = .white
-        button.titleLabel?.font = .robotoBold16()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(finishButtonTapped), for: .touchUpInside)
-        return button
-    }()
+//    private lazy var  finishButton: UIButton = {
+//        let button = UIButton(type: .system)
+//        button.backgroundColor = .specialGreen
+//        button.layer.cornerRadius = 10
+//        button.setTitle("FINISH", for: .normal)
+//        button.tintColor = .white
+//        button.titleLabel?.font = .robotoBold16()
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.addTarget(self, action: #selector(finishButtonTapped), for: .touchUpInside)
+//        return button
+//    }()
     
     private let workoutParametersView = WorkoutParametersView()
 
@@ -81,23 +81,23 @@ class RepsWorkoutViewController: UIViewController {
         view.addSubview(sportmanImageView)
         view.addSubview(detailsLabel)
         view.addSubview(workoutParametersView)
-        view.addSubview(finishButton)
+//        view.addSubview(finishButton)
     }
 
     @objc private func closeButtonTapped() {
         dismiss(animated: true, completion: nil)
     }
     
-    @objc private func finishButtonTapped() {
-        if numberOfSet == workoutModel.workoutSets {
-            dismiss(animated: true)
-            RealmManager.shared.updateStatusWorkoutModel(model: workoutModel)
-        } else {
-            alertOkCancel(title: "Warning", message: "You haven't finished your workout") {
-                self.dismiss(animated: true)
-            }
-        }
-    }
+//    @objc private func finishButtonTapped() {
+//        if numberOfSet == workoutModel.workoutSets {
+//            dismiss(animated: true)
+//            RealmManager.shared.updateStatusWorkoutModel(model: workoutModel)
+//        } else {
+//            alertOkCancel(title: "Warning", message: "You haven't finished your workout") {
+//                self.dismiss(animated: true)
+//            }
+//        }
+//    }
     
     private func setWorkoutParameters() {
         workoutParametersView.workoutNameLabel.text = workoutModel.workoutName
@@ -119,7 +119,7 @@ extension RepsWorkoutViewController: NextSetProtocol {
                 guard let numberOfSets = Int(sets),
                       let numberOfReps = Int(reps) else { return }
                 RealmManager.shared.udateSetsRepsWorkoutModel(model: workoutModel, sets: numberOfSets, reps: numberOfReps)
-            }
+            } 
         }
     }
 
@@ -128,7 +128,7 @@ extension RepsWorkoutViewController: NextSetProtocol {
             numberOfSet += 1
             workoutParametersView.numberOfSetsLabel.text = "\(numberOfSet)/\(workoutModel.workoutSets)"
         }  else {
-            alertOk(title: "Error", message: "Finish your workout")
+            alertOK(title: "Error", message: "Finish your workout")
         }
     }
 }
@@ -170,12 +170,12 @@ extension RepsWorkoutViewController {
             workoutParametersView.heightAnchor.constraint(equalToConstant: 230)
         ])
         
-        NSLayoutConstraint.activate([
-            finishButton.topAnchor.constraint(equalTo: workoutParametersView.bottomAnchor, constant: 20),
-            finishButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            finishButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            finishButton.heightAnchor.constraint(equalToConstant: 55)
-        ])
+//        NSLayoutConstraint.activate([
+//            finishButton.topAnchor.constraint(equalTo: workoutParametersView.bottomAnchor, constant: 20),
+//            finishButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+//            finishButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+//            finishButton.heightAnchor.constraint(equalToConstant: 55)
+//        ])
     }
 }
 
