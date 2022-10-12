@@ -9,7 +9,7 @@ import UIKit
 
 extension UIViewController {
     
-    func alertOK(title: String, message: String?) {
+    func alertOk(title: String, message: String?) {
         
         let alertController = UIAlertController(title: title,
                                                 message: message,
@@ -18,5 +18,4 @@ extension UIViewController {
         alertController.addAction(ok)
         present(alertController, animated: true)
     }
-    
 }

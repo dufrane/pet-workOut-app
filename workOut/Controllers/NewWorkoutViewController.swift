@@ -127,10 +127,10 @@ class NewWorkoutViewController: UIViewController {
         {
             RealmManager.shared.saveWorkoutModel(model: workoutModel)
             workoutModel = WorkoutModel()
-            alertOK(title: "Success", message: nil)
+            alertOk(title: "Success", message: nil)
             refreshObjects()
         } else {
-            alertOK(title: "Error", message: "Enter all parameters")
+            alertOk(title: "Error", message: "Enter all parameters")
         }
     }
     

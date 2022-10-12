@@ -21,6 +21,7 @@
 		9D7051F028E025580095F3DB /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7051EF28E025580095F3DB /* RealmManager.swift */; };
 		9D7051F228E0303E0095F3DB /* Date + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7051F128E0303E0095F3DB /* Date + Extensions.swift */; };
 		9D7051F728E2FC770095F3DB /* SimpleAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7051F628E2FC770095F3DB /* SimpleAlert.swift */; };
+		9DABB56728F758CF00519834 /* OkCancelAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DABB56628F758CF00519834 /* OkCancelAlert.swift */; };
 		9DD4782D28D72BC200DC2B44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4782C28D72BC200DC2B44 /* AppDelegate.swift */; };
 		9DD4782F28D72BC200DC2B44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4782E28D72BC200DC2B44 /* SceneDelegate.swift */; };
 		9DD4783128D72BC200DC2B44 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4783028D72BC200DC2B44 /* MainViewController.swift */; };
@@ -58,6 +59,7 @@
 		9D7051EF28E025580095F3DB /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		9D7051F128E0303E0095F3DB /* Date + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extensions.swift"; sourceTree = "<group>"; };
 		9D7051F628E2FC770095F3DB /* SimpleAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAlert.swift; sourceTree = "<group>"; };
+		9DABB56628F758CF00519834 /* OkCancelAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OkCancelAlert.swift; sourceTree = "<group>"; };
 		9DD4782928D72BC200DC2B44 /* workOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = workOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DD4782C28D72BC200DC2B44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DD4782E28D72BC200DC2B44 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			children = (
 				9D7051F628E2FC770095F3DB /* SimpleAlert.swift */,
 				9D40ED8C28ED9A4C006E5D6F /* CustomAlert.swift */,
+				9DABB56628F758CF00519834 /* OkCancelAlert.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DD4785128D8706700DC2B44 /* UIView + Extensions.swift in Sources */,
+				9DABB56728F758CF00519834 /* OkCancelAlert.swift in Sources */,
 				9D40ED8528ED954E006E5D6F /* TimerWorkoutViewController.swift in Sources */,
 				9D7051ED28E023E50095F3DB /* WorkoutModel.swift in Sources */,
 				9DD4785328D8706700DC2B44 /* UIStackView + Extensions.swift in Sources */,
