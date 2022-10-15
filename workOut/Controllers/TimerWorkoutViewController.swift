@@ -60,6 +60,13 @@ class TimerWorkoutViewController: UIViewController {
     private let timerWorkoutParametersView = TimerWorkoutParametersView()
 
     private let detailsLabel = UILabel(text: "Details")
+    
+    var workoutModel = WorkoutModel()
+    private let customAlert = CustomAlert()
+    
+    private var durationTimer = 0
+    private var numberOfSet = 0
+    private var shapeLayer = CAShapeLayer()
 
     override func viewDidLayoutSubviews() {
         closeButton.layer.cornerRadius = closeButton.frame.height / 2
@@ -71,6 +78,7 @@ class TimerWorkoutViewController: UIViewController {
         setupViews()
         setConstraints()
         setDelegates()
+        addTaps()
     }
     
     private func setDelegates() {
@@ -95,6 +103,16 @@ class TimerWorkoutViewController: UIViewController {
     
     @objc private func finishButtonTapped() {
        print("finish")
+    }
+    
+    private func addTaps() {
+        let tapLabel = UITapGestureRecognizer(target: self, action: #selector(startTimer))
+        timerLabel.isUserInteractionEnabled = true
+        timerLabel.addGestureRecognizer(tapLabel)
+    }
+    
+    @objc private func startTimer() {
+        print("tap start")
     }
 }
 
