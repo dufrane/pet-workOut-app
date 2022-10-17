@@ -67,9 +67,11 @@ class TimerWorkoutViewController: UIViewController {
     private var durationTimer = 0
     private var numberOfSet = 0
     private var shapeLayer = CAShapeLayer()
+    private var timer = Timer()
 
     override func viewDidLayoutSubviews() {
         closeButton.layer.cornerRadius = closeButton.frame.height / 2
+        animationCircular()
     }
     
     override func viewDidLoad() {
@@ -79,6 +81,7 @@ class TimerWorkoutViewController: UIViewController {
         setConstraints()
         setDelegates()
         addTaps()
+        setWorkoutParameters()
     }
     
     private func setDelegates() {
@@ -114,6 +117,16 @@ class TimerWorkoutViewController: UIViewController {
     @objc private func startTimer() {
         print("tap start")
     }
+    
+    private func setWorkoutParameters() {
+        timerWorkoutParametersView.workoutNameLabel.text = workoutModel.workoutName
+        timerWorkoutParametersView.numberOfSetsLabel.text = "\(numberOfSet)/\(workoutModel.workoutSets)"
+        
+        let(min, sec) = workoutModel.workoutTimer.convertSeconds()
+        timerWorkoutParametersView.numberOfTimerLabel.text = "\(min) min \(sec) sec"
+        timerLabel.text = "\(min):\(sec.setZeroForSecond())"
+        durationTimer = workoutModel.workoutTimer
+    }
 }
 
 //MARK: - NextSetTimerProtocol
@@ -128,6 +141,42 @@ extension TimerWorkoutViewController: NextSetTimerProtocol {
         print("edit")
     }
 }
+
+extension TimerWorkoutViewController {
+    
+    private func animationCircular() {
+        
+        let center = CGPoint(x: ellipseImageView.frame.width / 2,
+                             y: ellipseImageView.frame.height / 2)
+        let endAngle = (-CGFloat.pi / 2)
+        let startAngle = 2 * CGFloat.pi + endAngle
+        
+        let circularPath = UIBezierPath(arcCenter: center,
+                                        radius: ellipseImageView.frame.width / 2 - 10,
+                                        startAngle: startAngle,
+                                        endAngle: endAngle,
+                                        clockwise: false)
+        
+        shapeLayer.path = circularPath.cgPath
+        shapeLayer.lineWidth = 21
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.strokeEnd = 1
+        shapeLayer.lineCap = .round
+        shapeLayer.strokeColor = UIColor.specialGreen.cgColor
+        ellipseImageView.layer.addSublayer(shapeLayer)
+    }
+    
+    private func basicAnimation() {
+        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        basicAnimation.toValue = 0
+        basicAnimation.duration = CFTimeInterval(durationTimer)
+        basicAnimation.fillMode = .forwards
+        basicAnimation.isRemovedOnCompletion = true
+        shapeLayer.add(basicAnimation, forKey: "basicAnimation")
+    }
+}
+
+
 
 //MARK: - SetConstraints
 extension TimerWorkoutViewController {
@@ -165,15 +214,15 @@ extension TimerWorkoutViewController {
             detailsLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
         
-//        NSLayoutConstraint.activate([
-//            timerWorkoutParametersView.topAnchor.constraint(equalTo: detailsLabel.bottomAnchor, constant: 5),
-//            timerWorkoutParametersView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-//            timerWorkoutParametersView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-//            timerWorkoutParametersView.heightAnchor.constraint(equalToConstant: 230)
-//        ])
+        NSLayoutConstraint.activate([
+            timerWorkoutParametersView.topAnchor.constraint(equalTo: detailsLabel.bottomAnchor, constant: 5),
+            timerWorkoutParametersView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            timerWorkoutParametersView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            timerWorkoutParametersView.heightAnchor.constraint(equalToConstant: 230)
+        ])
         
         NSLayoutConstraint.activate([
-//            finishButton.topAnchor.constraint(equalTo: timerWorkoutParametersView.bottomAnchor, constant: 20),
+            finishButton.topAnchor.constraint(equalTo: timerWorkoutParametersView.bottomAnchor, constant: 20),
             finishButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             finishButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             finishButton.heightAnchor.constraint(equalToConstant: 55)
