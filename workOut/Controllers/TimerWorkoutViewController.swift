@@ -115,7 +115,38 @@ class TimerWorkoutViewController: UIViewController {
     }
     
     @objc private func startTimer() {
-        print("tap start")
+        timerWorkoutParametersView.editingButton.isEnabled = false
+        timerWorkoutParametersView.nextSetsButton.isEnabled = false
+        
+        if numberOfSet == workoutModel.workoutSets {
+            alertOk(title: "Error", message: "Finish your workout")
+        } else {
+            basicAnimation()
+            timer = Timer.scheduledTimer(timeInterval: 1,
+                                         target: self,
+                                         selector: #selector(timerAction),
+                                         userInfo: nil,
+                                         repeats: true)
+        }
+    }
+    
+    @objc private func timerAction() {
+        durationTimer -= 1
+        print(durationTimer)
+        
+        if durationTimer == 0 {
+            timer.invalidate()
+            durationTimer = workoutModel.workoutTimer
+            
+            numberOfSet += 1
+            timerWorkoutParametersView.numberOfSetsLabel.text = "\(numberOfSet)/\(workoutModel.workoutSets)"
+            
+            timerWorkoutParametersView.editingButton.isEnabled = true
+            timerWorkoutParametersView.nextSetsButton.isEnabled = true
+        }
+        
+        let (min, sec) = durationTimer.convertSeconds()
+        timerLabel.text = "\(min):\(sec.setZeroForSecond())"
     }
     
     private func setWorkoutParameters() {
