@@ -162,6 +162,8 @@ class NewWorkoutViewController: UIViewController {
     }
 }
 
+// MARK: - UITextFieldDelegate
+
 extension NewWorkoutViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

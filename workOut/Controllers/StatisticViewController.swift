@@ -43,6 +43,24 @@ class StatisticViewController: UIViewController {
         return segmentedControl
     }()
     
+    private let nameTextField: UITextField = {
+       let textField = UITextField()
+        textField.backgroundColor = .specialBrown
+        textField.borderStyle = .none
+        textField.layer.cornerRadius = 10
+        textField.textColor = .specialGray
+        textField.font = .robotoBold20()
+        textField.leftView = UIView(frame: CGRect(x: 0,
+                                                  y: 0,
+                                                  width: 15,
+                                                  height: textField.frame.height))
+        textField.leftViewMode = .always
+        textField.clearButtonMode = .always
+        textField.returnKeyType = .done
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .none
@@ -61,6 +79,9 @@ class StatisticViewController: UIViewController {
     private var workoutArray: Results<WorkoutModel>!
     
     private var differenceArray = [DifferenceWorkout]()
+    private var filteredArray = [DifferenceWorkout]()
+    
+    private var isFiltered = false
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -84,6 +105,7 @@ class StatisticViewController: UIViewController {
         
         view.addSubview(statisticLabel)
         view.addSubview(segmentedControl)
+        view.addSubview(nameTextField)
         view.addSubview(exercisesLabel)
         view.addSubview(tableView)
         tableView.register(StatisticTableViewCell.self,
@@ -93,6 +115,7 @@ class StatisticViewController: UIViewController {
     private func setDelegates() {
         tableView.dataSource = self
         tableView.delegate = self
+        nameTextField.delegate = self
     }
     
     @objc private func segmentedChange() {
@@ -178,6 +201,15 @@ extension StatisticViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - UITextFieldDelegate
+
+extension StatisticViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nameTextField.resignFirstResponder()
+    }
+}
+
 extension StatisticViewController {
     
     private func setConstraints() {
@@ -194,7 +226,14 @@ extension StatisticViewController {
         ])
         
         NSLayoutConstraint.activate([
-            exercisesLabel.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 10),
+            nameTextField.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 10),
+            nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            nameTextField.heightAnchor.constraint(equalToConstant: 38)
+        ])
+        
+        NSLayoutConstraint.activate([
+            exercisesLabel.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 10),
             exercisesLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             exercisesLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
