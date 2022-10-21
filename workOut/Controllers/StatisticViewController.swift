@@ -44,7 +44,7 @@ class StatisticViewController: UIViewController {
     }()
     
     private let nameTextField: UITextField = {
-       let textField = UITextField()
+        let textField = UITextField()
         textField.backgroundColor = .specialBrown
         textField.borderStyle = .none
         textField.layer.cornerRadius = 10
@@ -172,6 +172,14 @@ class StatisticViewController: UIViewController {
         tableView.reloadData()
     }
     
+    private func filteringWorkouts(text: String) {
+        
+        for workout in differenceArray {
+            if workout.name.lowercased().contains(text.lowercased()) {
+                filteredArray.append(workout)
+            }
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -179,14 +187,14 @@ class StatisticViewController: UIViewController {
 extension StatisticViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        differenceArray.count
+        isFiltered ? filteredArray.count : differenceArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: idStatisticTableViewCell, for: indexPath) as? StatisticTableViewCell else {
             return UITableViewCell()
         }
-        let differenceModel = differenceArray[indexPath.row]
+        let differenceModel = isFiltered ? filteredArray[indexPath.row] : differenceArray[indexPath.row]
         cell.cellConfigure(differenceWorkout: differenceModel)
         return cell
     }
@@ -207,6 +215,28 @@ extension StatisticViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         nameTextField.resignFirstResponder()
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if let text = textField.text,
+            let textRange = Range(range, in: text) {
+            let updatedText = text.replacingCharacters(in: textRange, with: string)
+            filteredArray = [DifferenceWorkout]()
+            isFiltered = updatedText.count > 0
+            filteringWorkouts(text: updatedText)
+            tableView.reloadData()
+        }
+        return true
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        isFiltered = false
+        differenceArray = [DifferenceWorkout]()
+        let dateToday = Date().localDate()
+        getDifferenceModel(dateStart: dateToday.offsetDays(days: 7))
+        tableView.reloadData()
+        return true
     }
 }
 
