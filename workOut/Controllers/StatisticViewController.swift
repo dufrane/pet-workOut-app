@@ -88,6 +88,7 @@ class StatisticViewController: UIViewController {
         
         differenceArray = [DifferenceWorkout]()
         setStartScreen()
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -172,7 +173,7 @@ class StatisticViewController: UIViewController {
         tableView.reloadData()
     }
     
-    private func filteringWorkouts(text: String) {
+    private func filtringWorkouts(text: String) {
         
         for workout in differenceArray {
             if workout.name.lowercased().contains(text.lowercased()) {
@@ -191,7 +192,8 @@ extension StatisticViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: idStatisticTableViewCell, for: indexPath) as? StatisticTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: idStatisticTableViewCell,
+                                                       for: indexPath) as? StatisticTableViewCell else {
             return UITableViewCell()
         }
         let differenceModel = isFiltered ? filteredArray[indexPath.row] : differenceArray[indexPath.row]
@@ -214,17 +216,16 @@ extension StatisticViewController: UITableViewDelegate {
 extension StatisticViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        nameTextField.resignFirstResponder()
+        textField.resignFirstResponder()
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        if let text = textField.text,
-            let textRange = Range(range, in: text) {
+        if let text = textField.text, let textRange = Range(range, in: text) {
             let updatedText = text.replacingCharacters(in: textRange, with: string)
             filteredArray = [DifferenceWorkout]()
             isFiltered = updatedText.count > 0
-            filteringWorkouts(text: updatedText)
+            filtringWorkouts(text: updatedText)
             tableView.reloadData()
         }
         return true
