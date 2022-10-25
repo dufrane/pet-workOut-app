@@ -80,14 +80,27 @@ class MainViewController: UIViewController {
     
     private let localRealm = try! Realm()
     private var workoutArray: Results<WorkoutModel>!
+    private var userArray: Results<UserModel>!
     
     private let idWorkoutTableViewCell = "idWorkoutTableViewCell"
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        userPhotoImageView.layer.cornerRadius = userPhotoImageView.frame.width / 2
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         getWorkouts(date: Date().localDate())
         tableView.reloadData()
+//        setupUserParameters()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showOnboarding()
     }
     
     override func viewDidLoad() {
@@ -96,9 +109,7 @@ class MainViewController: UIViewController {
         setupViews()
         setConstraints()
         setDelegates()
-    }
-    override func viewDidLayoutSubviews() {
-        userPhotoImageView.layer.cornerRadius = userPhotoImageView.frame.width / 2
+        getWeather()
     }
     
     private func setupViews() {
@@ -124,6 +135,24 @@ class MainViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         calendarView.cellCollectionViewDelegate = self
+    }
+    
+    private func getWeather() {
+        NetworkDataFetch.shared.fetchWether { [weak self] result, error in
+            guard let self = self else { return }
+            if let model = result {
+                self.weatherView.setWeather(model: model)
+                NetworkImageRequest.shared.requestData(id: model.weather[0].icon) { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case .success(let data):
+                        self.weatherView.setImage(data: data)
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+        }
     }
     
     @objc private func addWorkoutButtonTapped() {
@@ -159,6 +188,28 @@ class MainViewController: UIViewController {
             tableView.isHidden = false
         }
     }
+    
+//    private func setupUserParameters() {
+//
+//        if userArray.count != 0 {
+//            userNameLabel.text = userArray[0].userFirstName + " " + userArray[0].userSecondName
+//
+//            guard let data = userArray[0].userImage else { return }
+//            guard let image = UIImage(data: data) else { return }
+//            userPhotoImageView.image = image
+//        }
+//    }
+    
+    private func showOnboarding() {
+        let userDefaults = UserDefaults.standard
+        let onBoardingWasViewed = userDefaults.bool(forKey: "OnBoardingWasViewed")
+        if onBoardingWasViewed == false {
+            let onboardingViewController = OnboardingViewController()
+            onboardingViewController.modalPresentationStyle = .fullScreen
+            present(onboardingViewController, animated: false)
+        }
+    }
+    
 }
 
 extension MainViewController: StartWorkoutProtocol {
